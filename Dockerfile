@@ -19,7 +19,8 @@ RUN apt update && \
 USER sduser
 WORKDIR /app
 
-RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion-webui
+RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion-webui && \
+    sed -i 's/^#install_dir="\/home\/$(whoami)"/install_dir="\/app"/' /app/stable-diffusion-webui/webui-user.sh
 
 VOLUME /app/stable-diffusion-webui/extensions
 VOLUME /app/stable-diffusion-webui/models
