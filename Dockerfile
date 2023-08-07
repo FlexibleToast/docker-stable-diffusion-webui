@@ -2,6 +2,7 @@ FROM nvidia/cuda:12.2.0-base-ubuntu20.04
 
 COPY entrypoint.sh /app/entrypoint.sh
 
+ARG DEBIAN_FRONTEND=noninteractive
 ARG PUID=1000
 ARG PGID=1000
 ENV PUID=${PUID}
@@ -12,7 +13,6 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd -g $PGID sdgroup && \
     useradd -m -s /bin/bash -u $PUID -g $PGID --home /app sduser && \
-    ln -s /app /home/sduser && \
     chown -R sduser:sdgroup /app && \
     chmod +x /app/entrypoint.sh
 
