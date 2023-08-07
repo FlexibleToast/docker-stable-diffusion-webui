@@ -59,7 +59,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=schedule,pattern=dev
+            type=push,pattern=dev
             type=sha,format=short
 
       # Build and push Docker image with Buildx (don't push on PR)
