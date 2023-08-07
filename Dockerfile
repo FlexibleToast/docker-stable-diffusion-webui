@@ -2,14 +2,16 @@ FROM universonic/cuda:11.7.1-ubuntu2210-base
 
 COPY entrypoint.sh /app/entrypoint.sh
 
-ENV PUID=1000
-ENV PGID=1000
+ARG PUID=1000
+ARG PGID=1000
+ENV PUID=${PUID}
+ENV PGID=${PGID}
 
 RUN apt update && \
     apt install -y python3 python3-pip python3-venv git wget libgl1-mesa-dev libglib2.0-0 libsm6 libxrender1 libxext6 && \
     rm -rf /var/lib/apt/lists/* && \
-    groupadd -g ${PGID} sdgroup && \
-    useradd -m -s /bin/bash -u ${PUID} -g ${PGID} --home /app sduser && \
+    groupadd -g $PGID sdgroup && \
+    useradd -m -s /bin/bash -u $PUID -g $PGID --home /app sduser && \
     ln -s /app /home/sduser && \
     chown -R sduser:sdgroup /app && \
     chmod +x /app/entrypoint.sh
