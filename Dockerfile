@@ -9,7 +9,7 @@ ENV PUID=${PUID}
 ENV PGID=${PGID}
 
 RUN apt update && \
-    apt install -y python3 python3-pip python3-venv git wget libgl1-mesa-dev libglib2.0-0 libsm6 libxrender1 libxext6 && \
+    apt install -y python3 python3-pip python3-venv git wget libgl1-mesa-dev libglib2.0-0 libsm6 libxrender1 libxext6 libtcmalloc-minimal4 && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd -g $PGID sdgroup && \
     useradd -m -s /bin/bash -u $PUID -g $PGID --home /app sduser && \
