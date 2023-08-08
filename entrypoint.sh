@@ -1,4 +1,4 @@
-# Check if PUID needs to be updated for sduser
+#!/bin/bash
 
 set -eu
 changed=false
