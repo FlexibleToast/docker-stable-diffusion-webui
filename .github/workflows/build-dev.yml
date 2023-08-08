@@ -34,6 +34,8 @@ jobs:
     
       - name: Clean up previous workflow runs
         uses: egmacke/action-cleanup-workflow-runs@v3
+        with:
+          token: ${{ secrets.ACTIONS_TOKEN }}
 
       - name: Checkout repository
         uses: actions/checkout@v3
