@@ -7,6 +7,7 @@ ARG PUID=1000
 ARG PGID=1000
 ENV PUID=${PUID}
 ENV PGID=${PGID}
+ENV PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:512
 
 RUN apt update && \
     apt install -y python3 python3-pip python3-venv git wget libgl1-mesa-dev libglib2.0-0 libsm6 libxrender1 libxext6 libtcmalloc-minimal4 && \
@@ -28,8 +29,6 @@ VOLUME /app/stable-diffusion-webui/outputs
 VOLUME /app/stable-diffusion-webui/localizations
 
 EXPOSE 8080
-
-ENV PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:512
 
 ENTRYPOINT ["/app/entrypoint.sh", "--update-check", "--xformers", "--listen", "--port", "8080", "--enable-insecure-extension-access"]
 CMD ["--medvram"]
