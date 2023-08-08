@@ -20,4 +20,4 @@
 # fi
 
 # Run webui.sh as the sduser
-su -c '/app/stable-diffusion-webui/webui.sh "$@"' sduser
+su - sduser -c '/app/stable-diffusion-webui/webui.sh "$0" "$@"'
