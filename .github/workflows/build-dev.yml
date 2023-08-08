@@ -1,4 +1,4 @@
-name: Docker
+name: Docker Dev
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -18,8 +18,8 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
-
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
@@ -31,6 +31,10 @@ jobs:
       id-token: write
 
     steps:
+    
+      - name: Clean up previous workflow runs
+        uses: egmacke/action-cleanup-workflow-runs@v3
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
