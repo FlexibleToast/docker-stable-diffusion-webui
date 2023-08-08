@@ -30,5 +30,5 @@ VOLUME /app/stable-diffusion-webui/localizations
 
 EXPOSE 8080
 
-ENTRYPOINT ["/app/entrypoint.sh", "--update-check", "--xformers", "--listen", "--port", "8080", "--enable-insecure-extension-access"]
-CMD ["--medvram"]
+ENTRYPOINT ["/app/entrypoint.sh", "--listen", "--port", "8080"]
+CMD ["--medvram", "--update-check", "--xformers", "--enable-insecure-extension-access"]
