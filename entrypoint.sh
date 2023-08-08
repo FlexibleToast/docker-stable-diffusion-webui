@@ -20,4 +20,4 @@
 # fi
 
 # Run webui.sh as the sduser
-sudo -u sduser /app/stable-diffusion-webui/webui.sh
+su -c "/app/stable-diffusion-webui/webui.sh" sduser
