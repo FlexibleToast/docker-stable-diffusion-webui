@@ -1,6 +1,7 @@
 # Check if PUID needs to be updated for sduser
 
-local changed=false
+set -eu
+changed=false
 
 # Check if PUID needs to be updated for sduser
 current_puid=$(id -u sduser)
