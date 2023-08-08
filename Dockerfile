@@ -17,7 +17,6 @@ RUN apt update && \
     chown -R sduser:sdgroup /app && \
     chmod +x /app/entrypoint.sh
 
-USER sduser
 WORKDIR /app
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion-webui && \
