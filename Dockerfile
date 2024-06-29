@@ -10,13 +10,14 @@ ENV PGID=${PGID}
 ENV PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:512
 
 RUN apt update && \
-    apt install -y python3 python3-pip python3-venv git wget libgl1-mesa-dev libglib2.0-0 libsm6 libxrender1 libxext6 libgoogle-perftools4 libtcmalloc-minimal4 libcusparse11 xdg-utils bc aria2 gosu && \
+    apt install -y python3 python3-pip python3-venv git wget libgl1-mesa-dev libglib2.0-0 libsm6 libxrender1 libxext6 libgoogle-perftools4 libtcmalloc-minimal4 libcusparse11 xdg-utils bc aria2 && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd -g $PGID sdgroup && \
     useradd -m -s /bin/bash -u $PUID -g $PGID --home /app sduser && \
     chown -R sduser:sdgroup /app && \
     chmod +x /app/entrypoint.sh
 
+USER sduser
 WORKDIR /app
 
 RUN git clone -b master https://github.com/AUTOMATIC1111/stable-diffusion-webui.git stable-diffusion-webui && \
